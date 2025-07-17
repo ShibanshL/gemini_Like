@@ -235,8 +235,8 @@ function Chatroom() {
                     {chatHistory.length > 0 && chatHistory.map((e:any, idx:number) => {
                         return(
                             <>
-                                <div className="Chat_H_Options" onClick={() => newPushData(e)}>
-                                    <p>{e.chatHeading.length > 18 ?e.chatHeading.slice(0, 18) + '...':e.chatHeading}</p>
+                                <div className="Chat_H_Options" >
+                                    <p onClick={() => newPushData(e)}>{e.chatHeading.length > 18 ?e.chatHeading.slice(0, 18) + '...':e.chatHeading}</p>
                                     <img src={DeleteGrayIcon} style={{width:'30px', position:'relative', zIndex:2}} alt="error404" onClick={() => deleteItem(idx)} />
                                 </div>
                             </>
@@ -270,7 +270,7 @@ function Chatroom() {
                                 <>
                                     <div className="Chat_H_Options"  onClick={() => newPushData(e)}>
                                         <p>{e.chatHeading.length > 18 ?e.chatHeading.slice(0, 18) + '...':e.chatHeading}</p>
-                                        <img src={DeleteGrayIcon} style={{width:'30px'}} alt="error404" onClick={() => deleteItem(idx)}/>
+                                        <img src={DeleteGrayIcon} style={{width:'30px', position:'relative', zIndex:2}} alt="error404" onClick={() => deleteItem(idx)}/>
                                     </div>
                                 </>
                             )
