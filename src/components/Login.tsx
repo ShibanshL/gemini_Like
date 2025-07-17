@@ -27,15 +27,16 @@ function Login() {
 
     const nav = useNavigate()
 
+    //This checks in localstorage if user is presenet if so then it navigates to the AI chatroom
     useEffect(() => {
         const user = localStorage.getItem("User")
-
         if(user && (JSON.parse(user).name && JSON.parse(user).password)){
             setUserdata(JSON.parse(user))
             Nav()
         }
     },[])
 
+    //This is to simulate otp functionality of the login page
     useEffect(() => {
         setTimeout(() => {
             if(otpSent) setOtpSent(false)
@@ -44,8 +45,8 @@ function Login() {
 
     useEffect(() => {setOtp('')},[])
 
+    //A reusable component for making input elements for login form
     const userInputNodes = (e:string, v:string) => {
-
         return (
             <>
                 <div className="UserInputs">
@@ -56,11 +57,9 @@ function Login() {
         )
     }
 
+    //This function is to navigate to AI chatroom once logged in.
     const Nav = () => {
-
-        return nav('/chat',{
-                        state:userData
-                    })
+        return nav('/chat',{state:userData})
     }
 
   return (

@@ -77,6 +77,7 @@ function Chatroom() {
 
     const [imageData, setImageData] = useState<ImageData | null>(null);
 
+    //This funciotn is for image upload
     const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (!file) return;
@@ -97,7 +98,7 @@ function Chatroom() {
         reader.readAsDataURL(file);
     };
 
-
+    //Simple logout, when logging out user stored in localstorage is deleted
     const logout = () => {
         nav('/')
         localStorage.removeItem('User')
@@ -107,6 +108,7 @@ function Chatroom() {
         })
     }
 
+    //This function is when you submit your query through chat
     const newSubmitData = () => {
         if(chat.trim() != ''){
             setChatResult(true)
@@ -117,6 +119,7 @@ function Chatroom() {
         }
     }
 
+    //When you want to revisit old queries this function is used
     const newPushData = (e:ChatHistory) => {
         setChatResult(true)
         setMessages(e.userChats)
@@ -124,6 +127,7 @@ function Chatroom() {
 
     }
 
+    //Simulating form, essentially when you click enter key it triggers the ai reply
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
         e.preventDefault();
@@ -131,6 +135,7 @@ function Chatroom() {
         }
     };
 
+    //This function checks and controls the geminiNotif property which is used for the 'gemini-typing' and 'gemini-done' in ai replies
     const setNotifTrue = (indexToUpdate:number) => {
         setMessages((prevMessages) =>
             prevMessages.map((item, index) =>
@@ -139,6 +144,9 @@ function Chatroom() {
         );
     };
 
+    //This is the function that checks if we are in a new session or in a existing session. It does so by using unique id
+    //we created. It uses that unique id and sorts through chat history array to see if the paritcualr ID is present if so
+    //we don't need to push just update.
     const updateOrPushChat = (newChat: ChatHistory) => {
         setChatHistory((prevChats:ChatHistory[]) => {
         const exists = prevChats.some(chat => chat.uuID === newChat.uuID);
@@ -155,22 +163,25 @@ function Chatroom() {
         });
     };
 
+    //This function as the name suggest to delete singular objects from chat history
     const deleteItem = (indexToDelete: number): void => {
         setChatHistory(chatHistory.filter((_item: string, index: number): boolean => index !== indexToDelete));
         setNotif(true)
     };
 
+    //This is for autoscroll to bottom
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     },[messages])
 
+    //This is for updating chat history
     useEffect(() => {
         if(messages.length > 0){
             updateOrPushChat({uuID:uniqueID,chatHeading:messages[0].message,userChats:messages})
         }
     },[dirtyLoad])
 
-
+    //This is for controlling the notification tab
     useEffect(() => {
         setTimeout(() => {
             if(notif) setNotif(false)
@@ -178,10 +189,12 @@ function Chatroom() {
         }, 2000);
     },[notif || clipBoard])
 
+    //This is for copying the text content into your clipboard
     useEffect(() => {
         if(clipBoard) navigator.clipboard.writeText(Text)
     },[clipBoard])
 
+    //This is to receive user data with the help of react router upon navigation
     useEffect(() => {
         if(location.state) {
             if(location.state.name && location.state.password){
@@ -191,6 +204,7 @@ function Chatroom() {
         }
     },[])
 
+    //This is to get user data if present in localstorage, if not you are navigated back to login page
     useEffect(() => {
         const userData = localStorage.getItem('User')
         if(userData && (JSON.parse(userData).name && JSON.parse(userData).password)){
@@ -199,11 +213,13 @@ function Chatroom() {
         else nav('/')
     },[])
 
+    //This is to create Unique ID on every load
     useEffect(() => {
         const id = generateId();
         setUniqueID(id);
     }, []);
 
+    //This is for the persistence of chat history
     useEffect(() => {
         const chats = localStorage.getItem('Chat_History')
 
@@ -212,12 +228,12 @@ function Chatroom() {
         }
     },[])
 
+    //This is to update localstorage everytime chat is updated, also to keep chat histories length below 10
     useEffect(() => {
         localStorage.setItem('Chat_History',JSON.stringify(chatHistory))
         if(chatHistory.length > 10) {
             let newChatHistory = chatHistory;
             newChatHistory.shift()
-
             setChatHistory(newChatHistory)
         }
     },[chatHistory])
