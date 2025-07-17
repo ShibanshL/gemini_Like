@@ -1,0 +1,878 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+
+
+
+
+/* CHATROOM */
+
+
+.MainBody{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+
+  .Notification{
+    position: absolute;
+    background: white;
+    color:black;
+    font-weight: 600;
+    height: 80px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition:0.5s ease;
+    bottom: 35px;
+    left:-1000px;
+
+  }
+
+
+  .Sidebar{
+    width: var(--element-width, 70px);
+    height: 100vh;
+    background: #282a2c;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 25px 5px 25px 5px;
+    transition: 0.5s ease;
+
+    button{
+      background: none;
+      transition: 0.5s ease;
+      border: none;
+      outline: none;
+      border-radius: 50px;
+      /* transition: 0.3s ease; */
+    }
+
+    #Delete {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        transition: 0.5s ease;
+        background: none;
+        cursor: pointer;
+        /* background: rgb(189, 46, 46); */
+    }
+
+    button:hover, #Delete:hover{
+      background: rgb(51, 51, 51);
+    }
+
+    .ChatHistory{
+      width: 100%;
+      flex: 1;
+      padding: 10px 18px 10px 10px;
+      opacity:var(--element-opacity, 0);
+      transition: 0.5s ease;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      overflow-y: scroll;
+      gap:10px;
+
+      .Chat_H_Options{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: 0.5s ease;
+        cursor: pointer;
+        border:none;
+        padding: 5px;
+        border-radius: 5px;
+
+        p{
+          flex: 1;
+        }
+
+        img{
+          /* background: rgb(43, 43, 43); */
+          transition: 0.5s ease;
+          padding: 5px;
+          border-radius: 20px;
+          cursor: pointer;
+        }
+
+        img:hover{
+          background: #1b1c1d;
+        }
+        /* background:pink */
+      }
+
+      .Chat_H_Options:hover{
+        border:1px solid rgb(51,51,51);
+      }
+
+      /* .ChatHistorySub{
+
+      } */
+      /* border: 1px solid cyan; */
+    }
+  }
+
+  .MainChat{
+    flex: 1;
+    height: 100vh;
+    background: #1b1c1d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .MobileSideBar{
+      display: none;
+    }
+
+    .Header{
+      height: 100px;
+      width: 100%;
+      /* border:2px solid red; */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap:20px;
+      padding: 10px;
+
+     .MobileSideBarButton{
+        display: none;
+      }
+
+     
+
+      .AI_Version{
+        flex:2;
+        height: 100%;
+        /* border: 2px solid red; */
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+
+        label{
+          font-size: 20px;
+        }
+
+        button{
+          height: 25px;
+          width: 80px;
+          font-size: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          border-radius: 30px;
+          background: rgb(51, 51, 51);
+          border:none;
+          outline:none;
+          transition: 0.5s ease;
+        }
+
+        /* button:hover{
+          background: rgb(51, 51, 51);
+        } */
+
+      }
+
+      .Update{
+        background: rgb(51, 51, 51);
+        border-radius: 50px;
+        border: none;
+        outline: none;
+      }
+
+     .UserIcon{
+        height: 40px;
+        width: 40px;
+        border-radius: 50px;
+        background: rgb(11, 80, 230);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 700;
+        /* padding-right: 5px; */
+    
+     }
+
+     .UserIcon:hover{
+      cursor: pointer;
+     }
+
+    }
+
+    .Heading {
+      flex: 1;
+      /* height: 300px; */
+      width: 100%;
+      /* border:2px solid orange; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      /* border:1px solid green; */
+      .ImgUploaded{
+        height: 300px;
+        max-height:300px;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap:10px;
+
+        img{
+          width: 250px;
+        }
+
+        h2{
+          font-size: 20px;
+        }
+        /* background: pink; */
+      }
+
+      h1{
+        background-image: linear-gradient(90deg,rgba(49, 42, 181, 1) 0%, rgba(71, 71, 204, 1) 35%, rgba(0, 212, 255, 1) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .ChatReceived{
+        height: 100%;
+        max-height: 100%;
+        overflow-y: auto;
+        width: 100%;
+        padding: 20px;
+
+        /* border:2px solid red; */
+
+        .UserChat{
+          width: 50%;
+          /* min-width: 50%; */
+          height: 80px;
+          min-height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap:10px;
+          margin-top: 25px;
+          background: rgb(58, 58, 58);
+          padding: 15px;
+          border-radius: 50px 10px 50px 50px;
+          -webkit-border-radius: 50px 10px 50px 50px;
+          -moz-border-radius: 50px 10px 50px 50px;
+          position:static;
+
+          margin-left: 45%;
+          /* right: 0 !important; */
+
+
+          .UserIcon{
+              height: 40px;
+              width: 40px;
+              border-radius: 50px;
+              background: rgb(42, 67, 121);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 20px;
+              font-weight: 700;
+              /* padding-right: 5px; */
+          
+          }
+
+          p{
+            flex: 1;
+          }
+          /* background: pink; */
+        }
+
+        .AI_Reply{
+          margin-top: 15px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-direction: column;
+          gap:10px;
+          transition: 0.5s ease;
+          margin-right:35%;
+          padding-left: 30px;
+          
+
+          .Gemini_Text{
+            display: flex;
+            gap:10px;
+          }
+
+          .AI_Reply_Sub{
+             margin-top: 15px;
+             width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap:10px;
+            transition: 0.5s ease;
+            margin-left: 35px;
+            border: 2px solid gray;
+            border-radius: 50px 50px 450x 10px;
+            -webkit-border-radius: 50px 50px 50px 10px;
+            -moz-border-radius: 50px 50px 50px 10px;
+
+            padding:25px;
+
+            .AI_Reply_Buttons_O, .AI_Reply_Buttons{
+              transition: 0.4s ease;
+              opacity: 1;
+              display: flex;
+              gap:10px;
+
+              img{
+                background: none;
+                transition: 0.5s ease;
+                padding: 5px;
+                cursor: pointer;
+                border-radius: 50px;
+              }
+
+              img:hover{
+                background: rgb(51,51,51);
+                /* background: pink; */
+              }
+
+              .Gemini_Text{
+                display: flex;
+                background: pink;
+              }
+
+              p{
+                font-size: 15px;
+                font-weight: 600;
+              }
+              /* background: pink; */
+            }
+
+            .AI_Reply_Buttons_O{
+              opacity: 0;
+            }
+
+          }
+
+          
+        }
+      }
+    }
+
+    .ChatTag{ 
+      height: 200px;
+      width: 100%;
+      /* border:2px solid blue; */
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      .ChatTagMainBody{
+        height: 90%;
+        width:1000px;
+        border-radius: 25px;
+        border:1px solid rgb(95, 95, 95);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        /* padding-top: 15px; */
+        padding: 10px;
+        /* background: pink; */
+
+        input {
+          width: 100%;
+          height: 40%;
+          /* flex:1; */
+          /* background: pink; */
+          font-size: 18px;
+          border: none;
+          background: none;
+          outline: none;
+          padding-left: 20px;
+        }
+
+        .ChatButons{
+          width: 100%;
+          flex: 2;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap:10px;
+
+          .ChatOptions{
+            display: flex;
+            flex:1;
+            gap: 5px;
+
+            .AddIcon, .Img_Upload{
+              background: none;
+              transition: 0.5s ease;
+              border: none;
+              outline: none;
+              border-radius: 50px;
+            }
+           
+            .AddIcon:hover, .Img_Upload:hover{
+              background: rgb(51, 51, 51);
+            }
+
+            .Img_Upload {
+              position: relative;
+              input{
+                opacity: 0;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                z-index: 1;
+                position: absolute;
+                cursor: pointer;
+              }
+            }
+
+          }
+          .SendChat{
+            /* height: 100%; */
+            width:100px;
+            display: flex;
+            justify-content: flex-end;
+            /* background: pink; */
+
+            button{
+              background: none;
+              transition: 0.5s ease;
+              border: none;
+              outline: none;
+              border-radius: 50px;
+            }
+           
+            button:hover{
+              background: rgb(51, 51, 51);
+            }
+          }
+          /* padding: 10px; */
+        }
+
+      }
+    }
+  }
+
+}
+/* 
+#buttons::hover{
+  background: pink;
+} */
+
+
+/* Login */
+
+.LoginPage{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   background: #1b1c1d;
+   position: relative;
+
+  .Login_Tab{
+    height: 400px;
+    width:350px;
+    /* border:2px solid red; */
+    /* display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column; */
+    padding: 20px;
+    /* background: rgb(51, 51, 51); */
+    /* border: 5px solid rgb(29, 29, 29); */
+
+     border-top: 5px solid;
+     border-bottom: 5px solid;
+     border-left: 5px solid;
+     border-right: 5px solid;
+       border-image: linear-gradient(to right, red 0%, red 25%, yellow 25%, yellow 50%, green 50%, green 75%, blue 75%, blue 100%) 5;
+    border-radius: 25px;
+    
+       position: relative;
+    transition: 0.5s ease;
+    overflow: hidden;
+    /* background: #353535; */
+   /* background: #020024;
+  background: linear-gradient(153deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(2, 0, 36, 1) 100%); */
+/* background: #020024;
+background: linear-gradient(127deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%); */
+
+
+    .Login_P1
+    {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+      /* background: radial-gradient(circle at center, #6DD5ED 0%, #2193B0 100%); */
+      
+        h1{
+        /* background-image: linear-gradient(90deg,rgba(49, 42, 181, 1) 0%, rgba(71, 71, 204, 1) 35%, rgba(0, 212, 255, 1) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent; */
+        font-size: 45px;
+        /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
+      }
+
+
+      button{
+        border-radius: 50px;
+        width: 120px;
+        background: rgb(51, 51, 51);
+        outline: none;
+        border: none;
+      }
+
+      .UserInputs{
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap:5px;
+
+        /* .Inputs_ICON{
+           width: 100%;
+          height: 40px;
+          padding-left: 10px;
+          outline:none;
+          border: 1px solid rgb(51, 51, 51);
+          border-radius: 10px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+
+          input{
+            flex: 1;
+            height: 100%;
+          }
+
+          button{
+            width: 100px;
+          }
+
+        } */
+
+        input{
+          width: 100%;
+          height: 40px;
+          padding-left: 10px;
+          outline:none;
+          border: 1px solid rgb(51, 51, 51);
+          border-radius: 10px;
+
+        }
+      }
+    }
+
+    .Login_P2{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+      position: absolute;
+      /* background: pink; */
+      background: #1b1c1d;
+      left: 0;
+      transition: 0.5s ease;
+      z-index: 1;
+      top:var(--element-pos, 100%);
+      padding: 20px;
+
+      h1{
+        /* background-image: linear-gradient(90deg,rgba(49, 42, 181, 1) 0%, rgba(71, 71, 204, 1) 35%, rgba(0, 212, 255, 1) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent; */
+        color:white;
+        font-size: 30px;
+      }
+
+       #ph_Submit{
+        border-radius: 50px;
+        width: 120px;
+        background: rgb(51, 51, 51);
+        outline: none;
+        border: none;
+      }
+    }
+
+    .Login_P3{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+      position: absolute;
+      /* background: pink; */
+      background: #1b1c1d;
+      left: 0;
+      transition: 0.5s ease;
+      z-index: 20;
+      top:var(--element-pos_1, 100%);
+
+      h1{
+        /* background-image: linear-gradient(90deg,rgba(49, 42, 181, 1) 0%, rgba(71, 71, 204, 1) 35%, rgba(0, 212, 255, 1) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent; */
+        color:white;
+        font-size: 30px;
+      }
+
+      .OTP_inputs{
+        height: 100px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+       padding-left: 30px;
+       padding-right:30px;
+
+        input{
+          width: 100%;
+          height: 40px;
+          padding-left: 10px;
+          outline:none;
+          border: 1px solid rgb(51, 51, 51);
+          border-radius: 10px;
+          
+        }
+
+      }
+
+      .FakeText{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap:10px;
+
+        button{
+          border-radius: 50px;
+          width: 120px;
+          background: rgb(51, 51, 51);
+          outline: none;
+          border: none;
+      }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width:700px) {
+  
+ .LoginPage{
+   border-top: 5px solid;
+     border-bottom: 5px solid;
+     border-left: 5px solid;
+     border-right: 5px solid;
+       border-image: linear-gradient(to right, red 0%, red 25%, yellow 25%, yellow 50%, green 50%, green 75%, blue 75%, blue 100%) 5;
+  .Login_Tab{
+    border: none;
+  }
+ 
+      }
+}
+
+
+@media screen and (max-width:1200px) {
+ 
+
+  .MainChat{
+    position:  relative !important;
+
+    /* .Header{
+      .MobileSideBarButton{
+        display: block !important;
+      }
+    } */
+
+    .MobileSideBar{
+      display: block !important;
+      background: #1b1c1d;
+      /* border: 2px solid red; */
+      /* margin-left: var(--element-width-M, -200%) !important; */
+      position: absolute;
+      left:var(--element-width-M, -100%);
+      z-index: 1;
+      height:100%;
+      width: 300px;
+      max-width:450px;
+      box-shadow: 13px 1px 21px 0px rgba(0,0,0,0.75);
+      -webkit-box-shadow: 13px 1px 21px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 13px 1px 21px 0px rgba(0,0,0,0.75);
+      padding: 30px 10px 30px 10px;
+      transition: 0.5s ease;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+
+      h3{
+        margin-top:25px;
+        margin-left: 10px;
+      }
+
+      .MobileSideBarButton_I{
+        position: absolute;
+        top:10px;
+        left:10px;
+        border-radius: 50px;
+        background: none;
+        transition: 0.5s ease;
+      }
+      .MobileSideBarButton_I:hover{
+        background: rgb(51, 51, 51) !important;
+
+        /* background: pink; */
+      }
+
+      button{
+        background: none;
+        transition: 0.5s ease;
+        border: none;
+        outline: none;
+        border-radius: 50px;
+        /* transition: 0.3s ease; */
+      }
+
+      #Delete {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          transition: 0.5s ease;
+          background: none;
+          cursor: pointer;
+          /* background: rgb(189, 46, 46); */
+      }
+
+      button:hover, #Delete:hover{
+        background: rgb(51, 51, 51);
+      }
+
+      .ChatHistory{
+      width: 100%;
+      height: 80%;
+      max-height: 80%;
+      padding: 10px 10px 10px 10px;
+      opacity:var(--element-opacity, 0);
+      transition: 0.5s ease;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      overflow-y: scroll;
+      gap:10px;
+
+      .Chat_H_Options{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: 0.5s ease;
+        cursor: pointer;
+        border:none;
+        padding: 5px;
+        border-radius: 5px;
+
+        p{
+          flex: 1;
+        }
+
+        img{
+          /* background: rgb(43, 43, 43); */
+          transition: 0.5s ease;
+          padding: 5px;
+          border-radius: 20px;
+          cursor: pointer;
+        }
+
+        img:hover{
+          background: #1b1c1d;
+        }
+        /* background:pink */
+      }
+
+      .Chat_H_Options:hover{
+        border:1px solid rgb(51,51,51);
+      }
+
+      /* .ChatHistorySub{
+
+      } */
+      /* border: 1px solid cyan; */
+    }
+
+      
+    }
+
+  }
+
+  .MobileSideBarButton{
+    display: block !important;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    transition: 0.5s ease;
+    /* background: pink; */
+  }
+
+  .MobileSideBarButton:hover{
+    background: rgb(51, 51, 51);
+  }
+
+  .MobileSideBarButton_I{
+    display: block !important;
+  }
+
+   .MobileSideBar{
+    display: block !important;
+  }
+
+  .Sidebar{
+    display: none !important;
+  }
+
+  .UserIcon{
+    display: none !important;
+
+}
+
+}
