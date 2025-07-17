@@ -85,11 +85,10 @@ This will open the application in your browser at `http://localhost:3000`.
 .
 ├── public/                 # Public assets (e.g., index.html)
 ├── src/
-│   ├── components/         # Reusable UI components (e.g., ChatWindow, Message)
-│   ├── pages/              # Top-level page components (e.g., LoginPage, ChatPage)
+|   ├── assets/             # To store all the assets used in the app
+│   ├── components/         # All of the components (e.g., Login Page, Chatroom Page)
 │   ├── App.js              # Main application component
 │   ├── index.js            # Entry point of the React application
-│   └── styles/             # Global styles or utility CSS
 └── README.md
 ```
 
