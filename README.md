@@ -20,11 +20,11 @@ Here are some screenshots showcasing the application:
 
 ### Login Page
 
-*A placeholder for the login page of the AI Chatbot Clone.*
+![image description](src/assets/Login.png)
 
 ### Chat Interface
 
-*A placeholder for the main chat interface of the AI Chatbot Clone.*
+![image description](src/assets/ChatroomUI.png)
 
 -----
 
