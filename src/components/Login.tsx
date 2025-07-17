@@ -27,18 +27,6 @@ function Login() {
 
     const nav = useNavigate()
 
-    // useEffect(() => {
-    //     if (phNoClk){
-    //         setTimeout(() => {
-    //         setOtp('324556')
-    //         setTimeout(() => {
-    //         Nav()
-    //         }, 1000);
-    //     },3000)
-    //     }
-       
-    // },[phNoClk])
-
     useEffect(() => {
         const user = localStorage.getItem("User")
 
@@ -103,30 +91,15 @@ function Login() {
 
                     <div className="OTP_inputs">
                         <input type="number" placeholder='Enter the OTP' value={otp} onChange={(e:any) => setOtp(e.target.value)}/>
-                        {/* <input type="text" />
-                        <input type="text" />
-                        <input type="text" />
-                        <input type="text" />
-                        <input type="text" /> */}
                     </div>
                      <div className="FakeText">
                         <button disabled={JSON.stringify(otp).length < 8 ? true:false} onClick={() => {
                             Nav()
                         }}>VERIFY</button>
-                        {/* {otp?(<>
-                        <h2>OTP Received !!!</h2>
-                        </>):(<>
-                        <img src={LoadingGIF} style={{width:'20px'}} alt="error404" />
-                        <h2>Waiting for OTP</h2>
-                        </>)} */}
                         
                     </div>
                 </div>
-
-                
             </div>
-               {/* <img src={GeminiIcon} style={{width:'70px' ,position:'absolute',zIndex:30 , top:0, left:'46%'}} alt="" /> */}
-
             <div 
                 style={{
                 position: "absolute",
