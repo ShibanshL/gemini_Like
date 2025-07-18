@@ -1,17 +1,18 @@
 import React, { useEffect, useState, isValidElement, cloneElement } from 'react';
-
-import type { ReactNode, ReactElement} from 'react';
+import type { ReactNode, ReactElement } from 'react';
 
 interface TypingEffectProps {
   children: ReactNode;
   speed?: number;
   onComplete?: () => void;
+  instant?: boolean;
 }
 
 const TypingEffect: React.FC<TypingEffectProps> = ({
   children,
   speed = 100,
   onComplete,
+  instant = false,
 }) => {
   const [displayedChars, setDisplayedChars] = useState(0);
   const [fullText, setFullText] = useState('');
@@ -28,7 +29,7 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
   }, [children]);
 
   useEffect(() => {
-    if (!fullText) return;
+    if (!fullText || instant) return; 
 
     let index = 0;
     const interval = setInterval(() => {
@@ -41,7 +42,7 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
     }, speed);
 
     return () => clearInterval(interval);
-  }, [fullText, speed, onComplete]);
+  }, [fullText, speed, onComplete, instant]);
 
   const getTextLength = (node: ReactNode): number => {
     if (typeof node === 'string') return node.length;
@@ -69,7 +70,6 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
     }
 
     if (isValidElement(node)) {
-      // const childLength = getTextLength(node.props.children);
       const masked = maskText(node.props.children, remaining);
       return cloneElement(node as ReactElement, {
         children: masked,
@@ -78,6 +78,10 @@ const TypingEffect: React.FC<TypingEffectProps> = ({
 
     return null;
   };
+
+  if (instant) {
+    return <>{children}</>;
+  }
 
   return <>{maskText(children, displayedChars)}</>;
 };

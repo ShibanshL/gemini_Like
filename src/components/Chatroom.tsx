@@ -121,10 +121,11 @@ function Chatroom() {
 
     //When you want to revisit old queries this function is used
     const newPushData = (e:ChatHistory) => {
+        const data = e.userChats
+        data.map((e) => e.geminiNotif = true)
         setChatResult(true)
-        setMessages(e.userChats)
+        setMessages(data)
         setUniqueID(e.uuID)
-
     }
 
     //Simulating form, essentially when you click enter key it triggers the ai reply
@@ -352,6 +353,7 @@ function Chatroom() {
                                         <TypingEffect
                                             speed={20}
                                             onComplete={() => setNotifTrue(idx)}
+                                            instant={e.geminiNotif}
                                         >
                                             This is just psuedo text that is being displayed over here which is not fetching or receiving anything we are just simulating what it'd look like if we were using the real gemini.
                                             <br></br>
