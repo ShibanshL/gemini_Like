@@ -1,7 +1,7 @@
 import Chatroom from './components/Chatroom'
 import Login from './components/Login'
 import './App.css'
-import {BrowserRouter as Router, Routes, Route} from 'react-router'
+import {HashRouter as Router, Routes, Route} from 'react-router'
 
 function App() {
 
